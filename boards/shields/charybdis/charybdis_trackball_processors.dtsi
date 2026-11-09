@@ -16,6 +16,16 @@
 
 // Standard trackball processing configuration
 // Can be used in both standalone (trackball_listener) and dongle mode (input_split_listener)
+// Auto mouse layer: moving the ball turns on the POINTER layer, it switches off after this
+// many ms without ball movement (QMK's Charybdis default is 650 ms).
+#define AUTO_MOUSE_TIMEOUT_MS 700
+
+// Do not jump into the mouse layer if a key was pressed in the last 250 ms
+// (avoids accidental activation when the ball is brushed while typing).
+&zip_temp_layer {
+    require-prior-idle-ms = <250>;
+};
+
 #define CHARYBDIS_TRACKBALL_PROCESSORS \
     snipe { \
         layers = <SNIPING>; \
@@ -29,6 +39,6 @@
     \
     move { \
         layers = <BASE POINTER>; \
-        input-processors = <&zip_xy_scaler 1 1>; \
+        input-processors = <&zip_xy_scaler 1 1>, <&zip_temp_layer POINTER AUTO_MOUSE_TIMEOUT_MS>; \
     };
 
