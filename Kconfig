@@ -1,0 +1,2 @@
+# Local Zephyr module Kconfig
+rsource "drivers/pmw3610/Kconfig"
