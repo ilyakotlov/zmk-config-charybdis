@@ -2,6 +2,9 @@ manifest:
   remotes:
   - name: zmkfirmware
     url-base: https://github.com/zmkfirmware
+  # ZMK fork with the HID layer-state report (for the ZMK Layer Monitor macOS app)
+  - name: pfilipp
+    url-base: https://github.com/pfilipp
   - name: badjeff
     url-base: https://github.com/badjeff
   - name: carrefinho
@@ -12,8 +15,8 @@ manifest:
     url-base: https://github.com/hitsmaxft
   projects:
   - name: zmk
-    remote: zmkfirmware
-    revision: main
+    remote: pfilipp
+    revision: layer-state-report
     import: app/west.yml
   - name: zmk-pmw3610-driver
     remote: badjeff
